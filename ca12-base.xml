@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim include="Nasal/views.xml">
+
+    <author>BARANGER Emmanuel (3D/FDM)</author>
+    <aircraft-version>0.1</aircraft-version>
+    <status>Alpha</status>
+
+    <fuel-fraction>0.8</fuel-fraction>
+
+    <startup>
+     <splash-texture>Aircraft/Commonwealth-Ca-12/ca12-splash.png</splash-texture>
+    </startup>
+
+    <sound>
+      <path>Aircraft/Commonwealth-Ca-12/Sounds/ca12-sound.xml</path>
+    </sound>
+
+    <model>
+      <path archive="y">Aircraft/Commonwealth-Ca-12/Models/ca12.xml</path>
+      <livery>
+        <file type="string">default</file>
+      </livery>
+    </model>
+
+    <submodels> 
+      <serviceable type="bool">true</serviceable>
+      <path>Aircraft/Commonwealth-Ca-12/Models/Effects/guns/submodels.xml</path>
+    </submodels>
+
+    <multiplay>
+      <chat_display>1</chat_display>
+      <generic>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <int type="int">0</int>
+        <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
+        <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
+      </generic>
+    </multiplay>
+
+    <help>
+      <title>Dewoitine D 520</title>
+      <key>
+        <name>d</name>
+        <desc>Open/Close canopy</desc>
+      </key>
+      <key>
+        <name>e</name>
+        <desc>Guns fire</desc>
+      </key>
+    </help>
+
+    <menubar include="Dialogs/ca12-menu.xml"/>
+
+  </sim>
+
+  <yasim>
+    <vg33>
+      <pilot-lb>180</pilot-lb>
+    </vg33>
+  </yasim>
+
+  <engines>
+    <engine>
+      <rpm type="double">700</rpm>
+    </engine>
+  </engines>
+
+  <input>
+    <keyboard include="Nasal/ca12-keyboard.xml"/>
+  </input>
+ 
+  <nasal>
+    <ca12>
+      <file>Aircraft/Commonwealth-Ca-12/Nasal/doors.nas</file>
+      <file>Aircraft/Commonwealth-Ca-12/Nasal/immat.nas</file>
+      <file>Aircraft/Commonwealth-Ca-12/Nasal/liveries.nas</file>
+      <file>Aircraft/Commonwealth-Ca-12/Nasal/light.nas</file>
+    </ca12>
+    <guns>
+      <file>Aircraft/Commonwealth-Ca-12/Nasal/weapons.nas</file>
+      <file>Aircraft/Commonwealth-Ca-12/Nasal/revi.nas</file>
+    </guns>
+  </nasal>
+
+</PropertyList>
+

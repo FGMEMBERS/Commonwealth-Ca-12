@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList include="ca12-base.xml">
+
+  <sim>
+
+    <description>Commonwealth CA 12 (YASim)</description>
+    <flight-model>yasim</flight-model>
+    <aero>ca12-yasim</aero>
+
+  </sim>
+  
+</PropertyList>
