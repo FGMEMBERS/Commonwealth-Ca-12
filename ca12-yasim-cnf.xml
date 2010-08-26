@@ -4,7 +4,7 @@
 
   <sim>
 
-    <description>Commonwealth CA 12 (YASim)</description>
+    <description>Commonwealth CA 12 "Boomerang" (YASim)</description>
     <flight-model>yasim</flight-model>
     <aero>ca12-yasim</aero>
 

@@ -4,7 +4,7 @@
 <PropertyList include="ca12-yasim-cnf.xml">
 
   <sim>
-    <description>Dewoitine D 520</description>
+    <description>Commonwealth CA 12 "Boomerang"</description>
     <author>Emmanuel BARANGER (3D/FDM)</author>
   </sim>
 
