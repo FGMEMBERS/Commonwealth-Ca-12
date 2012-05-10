@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?> 
 
 <!-- Commonwealth CA 12 - 2010 Emmanuel BARANGER
 
@@ -14,7 +14,7 @@
 
 <airplane mass="5373" >
 
-  <approach speed="80" aoa="4" fuel="0.3">
+  <approach speed="80" aoa="2" fuel="0.3">
     <control-setting axis="/controls/engines/engine[0]/throttle" value="0.2"/>
     <control-setting axis="/controls/engines/engine[0]/mixture" value="1"/>
     <control-setting axis="/controls/engines/engine[0]/propeller-pitch" value="0"/>
@@ -41,7 +41,7 @@
         taper="0.54" 
 	dihedral="4" 
         sweep="6.6"
-	camber="0.07">
+	camber="0.05">
         <stall aoa="16" width="5" peak="1.5"/>
         <flap0 start="0.02" end="0.56" lift="1.7" drag="1.9"/>
         <flap1 start="0.56" end="0.90" lift="1.4" drag="1.1"/>
@@ -94,20 +94,27 @@
                  Displacement      : 1829.4 in3 (30 l)
   -->
   <propeller x="3.073" y="0.0" z="0.166"
-             mass="1250"
-             moment="110"
-             radius="1.555"
-             cruise-speed="250"
-             cruise-rpm="2325"
-             cruise-power="700"
-             cruise-alt="15000"
-             min-rpm="250"
-             max-rpm="2700">
+             mass="1696"
+             moment="5"
+             radius="1.74"
+             gear-ratio="0.5625"
+             min-rpm="675"
+             max-rpm="1519" 
+             course-stop="4.0"
+             fine-stop="0.25"
+             cruise-rpm="1153"
+             cruise-power="625"
+             cruise-speed="160"
+             cruise-alt="7500">
              <actionpt x="3.466" y="0.0" z="0.166"/>
              <control-input axis="/controls/engines/engine[0]/propeller-pitch" control="ADVANCE"/>
-             <piston-engine eng-power="1200" 
+             <piston-engine eng-power="1200"
                             eng-rpm="2700"
-                            displacement="1829.4">
+                            displacement="1829.4"
+                            compression="6.7"
+                            supercharger="1"
+                            turbo-mul="1.85"
+                            wastegate-mp="48">
                             <control-input axis="/controls/engines/engine[0]/throttle" control="THROTTLE"/>
                             <control-input axis="/controls/engines/engine[0]/starter" control="STARTER"/>
                             <control-input axis="/controls/engines/engine[0]/magnetos" control="MAGNETOS"/>
@@ -129,7 +136,7 @@
 
         <control-output control="EXTEND" prop="/gear/gear[0]/position-norm"/>
 
-        <control-speed control="EXTEND" transition-time="5.1"/>
+        <control-speed control="EXTEND" transition-time="4.1"/>
   </gear>
 
   <!-- right main -->
@@ -146,7 +153,7 @@
 
         <control-output control="EXTEND" prop="/gear/gear[1]/position-norm"/>
 
-        <control-speed control="EXTEND" transition-time="5.1"/>
+        <control-speed control="EXTEND" transition-time="6.1"/>
   </gear>
 
   <!-- Tail wheel -->
@@ -156,6 +163,7 @@
         damp="1.2"
         sfric="1"
         dfric="1">
+        <control-input axis="/controls/flight/rudder" control="STEER" src0="-1" src1="1" dst0="0.5" dst1="-0.5"/>
         <control-input axis="/controls/gear/tailwheel-lock" src0="0" src1="1" dst0="1" dst1="0" control="CASTERING"/>
   </gear>
 
@@ -163,9 +171,6 @@
   <tank x=" 1.50" y=" 1.7" z="-0.54" capacity="210" />
   <tank x=" 1.80" y=" 0.0" z="-0.50" capacity="156" />
   <tank x=" 1.50" y="-1.7" z="-0.54" capacity="210" />
-
-  <!-- -->
-  <ballast x="2" y="0" z="-3" mass="600" /> 
 
 </airplane>
 

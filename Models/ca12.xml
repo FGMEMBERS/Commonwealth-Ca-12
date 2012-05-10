@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?> 
 
 <PropertyList>
 
@@ -7,9 +7,23 @@
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Aircraft/Commonwealth-Ca-12/Models/Liveries", 10);
+
+      var self = cmdarg();
+
+      var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
+      var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
+      
+      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
+      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
+    
+      crew_door.alias(float_0);
+      passenger_door.alias(float_1);
     </load>
+
     <unload>
       livery_update.stop();
+      crew_door.unalias();
+      passenger_door.unalias();
     </unload>
   </nasal>
 
@@ -38,20 +52,21 @@
     <object-name>bol</object-name>
     <object-name>porteG1</object-name>
     <object-name>porteG2</object-name>
+    <object-name>porteD1</object-name>
+    <object-name>porteD2</object-name>
+    <object-name>pito</object-name>
+
+    <object-name>trous</object-name>
+    <object-name>cachesguns</object-name>
+    <object-name>helice</object-name>
+    <object-name>guns</object-name>
     <object-name>axeGH</object-name>
     <object-name>axeGB</object-name>
     <object-name>roueG</object-name>
-    <object-name>porteD1</object-name>
-    <object-name>porteD2</object-name>
     <object-name>axeDH</object-name>
     <object-name>axeDB</object-name>
     <object-name>roueD</object-name>
     <object-name>roueA</object-name>
-    <object-name>helice</object-name>
-    <object-name>trous</object-name>
-    <object-name>cachesguns</object-name>
-    <object-name>guns</object-name>
-    <object-name>pito</object-name>
 
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
@@ -85,37 +100,25 @@
     <object-name>bol</object-name>
     <object-name>porteG1</object-name>
     <object-name>porteG2</object-name>
+    <object-name>porteD1</object-name>
+    <object-name>porteD2</object-name>
+    <object-name>pito</object-name>
+
+    <object-name>trous</object-name>
+    <object-name>cachesguns</object-name>
+    <object-name>helice</object-name>
+    <object-name>guns</object-name>
     <object-name>axeGH</object-name>
     <object-name>axeGB</object-name>
     <object-name>roueG</object-name>
-    <object-name>porteD1</object-name>
-    <object-name>porteD2</object-name>
     <object-name>axeDH</object-name>
     <object-name>axeDB</object-name>
     <object-name>roueD</object-name>
     <object-name>roueA</object-name>
-    <object-name>helice</object-name>
-    <object-name>trous</object-name>
-    <object-name>cachesguns</object-name>
-    <object-name>guns</object-name>
-    <object-name>pito</object-name>
 
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
-<!--
-    <diffuse>
-      <red-prop>diffuse/red</red-prop>
-      <green-prop>diffuse/green</green-prop>
-      <blue-prop>diffuse/blue</blue-prop>
-    </diffuse>
-
-    <ambient>
-      <red-prop>ambient/red</red-prop>
-      <green-prop>ambient/green</green-prop>
-      <blue-prop>ambient/blue</blue-prop>
-    </ambient>
--->
     <specular>
       <red-prop>specular/red</red-prop>
       <green-prop>specular/green</green-prop>
@@ -127,11 +130,6 @@
       <green-prop>emission/green</green-prop>
       <blue-prop>emission/blue</blue-prop>
     </emission>
-<!--
-    <shininess>
-      <shininess-prop>shininess</shininess-prop>
-    </shininess>
--->
   </animation>
 
   <effect>
@@ -182,38 +180,36 @@
 
   <!-- Une ombre pour OSG -->
   <model>
-    <name>shadowOSG</name>
     <path>Aircraft/Commonwealth-Ca-12/Models/shadow.xml</path>
-  </model>
-
-  <animation>
-    <type>select</type>
-    <object-name>shadowOSG</object-name>
-    <condition>
-      <equals>
-        <property>sim[0]/rendering/shadows-ai</property>
-        <value>true</value>
-      </equals>
-    </condition>
-  </animation>
-
-  <!-- Moteur -->
-  <model>
-    <path>Aircraft/Commonwealth-Ca-12/Models/Engines/r1830.xml</path>
     <offsets>
-      <x-m> -3.073 </x-m>
+      <x-m>  0.000 </x-m>
       <y-m>  0.000 </y-m>
-      <z-m>  0.166 </z-m>
+      <z-m> -1.459 </z-m>
     </offsets>
   </model>
 
   <!-- Interieur -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Interior/interior.xml</path>
+  </model>
+
+  <!-- Moteur -->
+  <model>
+    <path>Aircraft/Commonwealth-Ca-12/Models/Engines/r1830.xml</path>
     <offsets>
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
+      <x-m> -2.900 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.166 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Cranking effects -->
+  <model>
+    <path>Aircraft/Commonwealth-Ca-12/Models/Effects/cranking/cranking.xml</path>
+    <offsets>
+      <x-m> -0.536 </x-m>
+      <y-m>  0.564 </y-m>
+      <z-m> -0.243 </z-m>
     </offsets>
   </model>
 
@@ -256,9 +252,7 @@
       <x-m> -2.876 </x-m>
       <y-m> -1.983 </y-m>
       <z-m> -0.476 </z-m>
-      <roll-deg>    0 </roll-deg>
       <pitch-deg> 180 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -269,9 +263,7 @@
       <x-m> -2.049 </x-m>
       <y-m> -2.566 </y-m>
       <z-m> -0.473 </z-m>
-      <roll-deg>    0 </roll-deg>
       <pitch-deg> 180 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -282,9 +274,7 @@
       <x-m> -2.022 </x-m>
       <y-m> -2.686 </y-m>
       <z-m> -0.460 </z-m>
-      <roll-deg>    0 </roll-deg>
       <pitch-deg> 180 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -295,9 +285,7 @@
       <x-m> -2.876 </x-m>
       <y-m>  1.983 </y-m>
       <z-m> -0.476 </z-m>
-      <roll-deg>    0 </roll-deg>
       <pitch-deg> 180 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -308,9 +296,7 @@
       <x-m> -2.049 </x-m>
       <y-m>  2.566 </y-m>
       <z-m> -0.473 </z-m>
-      <roll-deg>    0 </roll-deg>
       <pitch-deg> 180 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
@@ -321,9 +307,7 @@
       <x-m> -2.022 </x-m>
       <y-m>  2.686 </y-m>
       <z-m> -0.460 </z-m>
-      <roll-deg>    0 </roll-deg>
       <pitch-deg> 180 </pitch-deg>
-      <heading-deg> 0 </heading-deg>
     </offsets>
   </model>
 
