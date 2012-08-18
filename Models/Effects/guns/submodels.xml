@@ -157,7 +157,6 @@
     <life>5</life>
   </submodel>
 
--------
   <submodel>
     <name>right interior gun</name>
     <model alias="../../cannon/model"/>

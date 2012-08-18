@@ -85,8 +85,10 @@
   </engines>
 
   <nasal>
-    <ca12>
+    <doors>
       <file>Aircraft/Commonwealth-Ca-12/Nasal/doors.nas</file>
+    </doors>
+    <ca12>
       <file>Aircraft/Commonwealth-Ca-12/Nasal/immat.nas</file>
       <file>Aircraft/Commonwealth-Ca-12/Nasal/liveries.nas</file>
       <file>Aircraft/Commonwealth-Ca-12/Nasal/light.nas</file>

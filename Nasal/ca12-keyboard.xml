@@ -6,24 +6,24 @@
     <name>d</name>
     <desc>Crew door</desc>
     <binding>
-     <command>nasal</command>
-     <script>ca12.doorsystem.crewexport();</script>
+      <command>nasal</command>
+      <script>doors.doorsystem.crewexport();</script>
     </binding>
   </key>
 
   <key n="101">
-     <name>e</name>
-     <desc>Guns</desc>
-     <binding>
-       <command>nasal</command>
-       <script>guns.fire_MG()</script>
-     </binding>
-     <mod-up>
-       <binding>
-         <command>nasal</command>
-         <script>guns.stop_MG()</script>
-       </binding>
-     </mod-up>
+    <name>e</name>
+    <desc>Guns</desc>
+    <binding>
+      <command>nasal</command>
+      <script>guns.fire_MG()</script>
+    </binding>
+    <mod-up>
+      <binding>
+        <command>nasal</command>
+        <script>guns.stop_MG()</script>
+      </binding>
+    </mod-up>
   </key>
 
 </PropertyList>
