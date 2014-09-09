@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<PropertyList>
+
+  <path>interior.ac</path>
+
+  <animation>
+    <!-- Objets opaques -->
+    <object-name>interieur</object-name>
+    <object-name>inttour</object-name>
+    <object-name>intcanope</object-name>
+
+    <!-- Objets transparents -->
+    <object-name>intvitres</object-name>
+    <object-name>intverriere</object-name>
+  </animation>
+
+  <animation>
+    <type>shader</type>
+    <shader>chrome</shader>
+    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+    <object-name>intvitres</object-name>
+    <object-name>intverriere</object-name>
+  </animation>
+
+  <animation>
+    <type>noshadow</type>
+    <object-name>intvitres</object-name>
+    <object-name>intverriere</object-name>
+  </animation>
+
+  <!-- Pilote -->
+  <model>
+    <path>Aircraft/Commonwealth-Ca-12/Models/Pilot/pilot.xml</path>
+    <offsets>
+      <x-m> -1.020 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.523 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Planches de bord -->
+  <model>
+    <path>Aircraft/Commonwealth-Ca-12/Models/Interior/Panel/panel.xml</path>
+    <offsets>
+      <x-m> -1.595 </x-m>
+      <y-m>  0.000 </y-m>
+      <z-m>  0.747 </z-m>
+    </offsets>
+  </model>
+
+  <!-- Canopy -->
+  <animation>
+    <name>IntAllCanope</name>
+    <object-name>intcanope</object-name>
+    <object-name>intverriere</object-name>
+  </animation>
+
+  <animation>
+    <type>translate</type>
+    <object-name>IntAllCanope</object-name>
+    <property>/instrumentation/doors/crew/position-norm</property>
+    <interpolation>
+      <entry><ind> 0 </ind><dep> 0.00 </dep></entry>
+      <entry><ind> 1 </ind><dep> 0.68 </dep></entry>
+    </interpolation>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
+
