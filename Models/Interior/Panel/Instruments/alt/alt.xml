@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 
 <!-- altimeter -->
-
 <PropertyList> 
 
   <path>alt.ac</path>
@@ -17,18 +16,12 @@
     <object-name>vitre</object-name>
   </animation>
 
-  <animation>
-    <type>noshadow</type>
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Commonwealth-Ca-12/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitre</object-name>
-  </animation>
-
-  <animation>
-    <type>shader</type>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
-    <texture>glass.png</texture>
-    <object-name>vitre</object-name>
-  </animation>
-
+  </effect>
+  
   <animation>
     <type>material</type>
     <object-name>face</object-name>
@@ -48,11 +41,6 @@
     <object-name>alt-Needle1</object-name>
     <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor> 0.36 </factor>
-    <center> 
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
-    </center>
     <axis> 
       <x> -1 </x>
       <y>  0 </y>
@@ -65,11 +53,6 @@
     <object-name>alt-Needle2</object-name>
     <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor> 0.036 </factor>
-    <center> 
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
-    </center>
     <axis> 
       <x> -1 </x>
       <y>  0 </y>
@@ -82,11 +65,6 @@
     <object-name>alt-Needle3</object-name>
     <property>instrumentation/altimeter/indicated-altitude-ft</property>
     <factor> 0.0036 </factor>
-    <center> 
-      <x-m> 0 </x-m>
-      <y-m> 0 </y-m>
-      <z-m> 0 </z-m>
-    </center>
     <axis> 
       <x> -1 </x>
       <y>  0 </y>
