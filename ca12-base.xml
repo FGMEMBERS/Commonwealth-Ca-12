@@ -2,8 +2,9 @@
 
 <PropertyList>
 
-  <sim include="Nasal/views.xml">
+  <sim include="Systems/views.xml">
 
+    <description>Commonwealth CA 12 "Boomerang" (YASim)</description>
     <author>Emmanuel BARANGER (3D/FDM)</author>
     <aircraft-version>0.1</aircraft-version>
     <status>Alpha</status>
@@ -42,47 +43,35 @@
         <int type="bool" n="6" alias="/smoke/active"> 0 </int>                     <!--  6 start smoke -->
         <int type="int" n="7" alias="smoke/particlepersec"> 50 </int>              <!--  7 particlepersec -->
         <int type="int" n="10" alias="controls/armament/trigger">0</int>           <!-- 10 reserved for bombable mode -->
-        <float n="0" alias="/instrumentation/doors/crew/position-norm"/>
-        <float n="1" alias="/instrumentation/doors/passenger/position-norm"/>
+        <float n="0" alias="/sim/model/door-positions/crew/position-norm"/>
+        <float n="1" alias="/sim/model/door-positions/passenger/position-norm"/>
         <float n="2" alias="/position/gear-agl-m"> 0 </float>                      <!-- altitude for MP shadow -->
-        <float n="3" alias="/smoke/colors/knob-red">1</float>                      <!-- 3 smoke mixer red setting -->
-        <float n="4" alias="/smoke/colors/knob-green">1</float>                    <!-- 4 smoke mixer green setting -->
-        <float n="5" alias="/smoke/colors/knob-blue">1</float>                     <!-- 5 smoke mixer blue setting -->
-        <string n="9" type="string" />                                             <!-- string[9] reserved for bombable mode -->
+        <float n="3" alias="/position/altitude-ft"> 0 </float>                     <!-- altitude for Smoke/Trail -->
+        <float n="4" alias="/engines/engine[0]/rpm"/>
+        <float n="5" alias="/engines/engine[0]/cranking"/>
+        <float n="6" alias="/gear/gear[0]/wow/"/>
+        <float n="7" alias="/gear/gear[1]/wow/"/>
+        <float n="8" alias="/gear/gear[2]/wow/"/>
+        <float n="9" alias="/gear/gear[0]/rollspeed-ms"/>
+        <float n="10" alias="/gear/gear[1]/rollspeed-ms"/>
+        <float n="11" alias="/gear/gear[2]/rollspeed-ms"/>
+        <!-- For Bombable -->
+        <int type="int" n="10" alias="controls/armament/trigger">0</int>
+        <string n="9" type="string" />
       </generic>
     </multiplay>
-
-    <help>
-      <title>Commonwealth Ca 12</title>
-      <key>
-        <name>d</name>
-        <desc>Open/Close canopy</desc>
-      </key>
-      <key>
-        <name>e</name>
-        <desc>Guns fire</desc>
-      </key>
-    </help>
+    
+    <help include="Systems/help.xml"/>
 
     <menubar include="Dialogs/ca12-menu.xml"/>
 
   </sim>
 
-  <input>
-    <keyboard include="Nasal/ca12-keyboard.xml"/>
-  </input>
+  <input include="Systems/ca12-keyboard.xml"/>
  
-  <yasim>
-    <ca12>
-      <pilot-lb>180</pilot-lb>
-    </ca12>
-  </yasim>
+  <yasim include="Systems/yasim.xml"/>
 
-  <engines>
-    <engine>
-      <rpm type="double">700</rpm>
-    </engine>
-  </engines>
+  <engines include="Systems/engines.xml"/>
 
   <nasal>
     <doors>

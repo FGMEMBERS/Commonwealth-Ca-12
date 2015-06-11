@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="ISO-8859-1"?> 
 
 <PropertyList>
-
+  
   <path>ca12.ac</path>
-
+  
   <nasal>
     <load>
       var livery_update = aircraft.livery_update.new("Aircraft/Commonwealth-Ca-12/Models/Liveries", 10);
-
+      
       var self = cmdarg();
-
+      
       var float_0 = self.getNode("sim/multiplay/generic/float[0]", 1);
       var float_1 = self.getNode("sim/multiplay/generic/float[1]", 1);
       
-      var crew_door = self.getNode("instrumentation/doors/crew/position-norm", 1);
-      var passenger_door = self.getNode("instrumentation/doors/passenger/position-norm", 1);
-    
+      var crew_door = self.getNode("sim/model/door-positions/crew/position-norm", 1);
+      var passenger_door = self.getNode("sim/model/door-positions/passenger/position-norm", 1);
+      
       crew_door.alias(float_0);
       passenger_door.alias(float_1);
     </load>
-
+    
     <unload>
       livery_update.stop();
       crew_door.unalias();
       passenger_door.unalias();
     </unload>
   </nasal>
-
+  
   <animation>
     <!-- Objets opaques -->
     <object-name>fuselage</object-name>
@@ -55,7 +55,7 @@
     <object-name>porteD1</object-name>
     <object-name>porteD2</object-name>
     <object-name>pito</object-name>
-
+    
     <object-name>trous</object-name>
     <object-name>cachesguns</object-name>
     <object-name>helice</object-name>
@@ -66,15 +66,16 @@
     <object-name>axeDH</object-name>
     <object-name>axeDB</object-name>
     <object-name>roueD</object-name>
+    <object-name>axeA</object-name>
     <object-name>roueA</object-name>
-
+    
     <!-- Objets transparents -->
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
   </animation>
-
+  
   <animation>
     <type>material</type>
     <object-name>fuselage</object-name>
@@ -103,7 +104,7 @@
     <object-name>porteD1</object-name>
     <object-name>porteD2</object-name>
     <object-name>pito</object-name>
-
+    
     <object-name>trous</object-name>
     <object-name>cachesguns</object-name>
     <object-name>helice</object-name>
@@ -114,8 +115,9 @@
     <object-name>axeDH</object-name>
     <object-name>axeDB</object-name>
     <object-name>roueD</object-name>
+    <object-name>axeA</object-name>
     <object-name>roueA</object-name>
-
+    
     <property-base>sim/model/livery</property-base>
     <texture-prop>texture</texture-prop>
     <texture>texture.png</texture>
@@ -124,14 +126,8 @@
       <green-prop>specular/green</green-prop>
       <blue-prop>specular/blue</blue-prop>
     </specular>
-
-    <emission>
-      <red-prop>emission/red</red-prop>
-      <green-prop>emission/green</green-prop>
-      <blue-prop>emission/blue</blue-prop>
-    </emission>
   </animation>
-
+  
   <effect>
     <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
     <object-name>fuselage</object-name>
@@ -161,48 +157,48 @@
     <object-name>porteD2</object-name>
     <object-name>pito</object-name>
   </effect>
-
-  <animation>
-    <type>shader</type>
-    <shader>chrome</shader>
-    <texture>Aircraft/Generic/Effects/glass_shader.png</texture>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Aircraft/Commonwealth-Ca-12/Models/Effects/Glass/glass</inherits-from>
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
-  </animation>
-
-  <animation>
-    <type>noshadow</type>
+  </effect>
+  
+  <!-- working for Rembrandt -->
+  <effect>
+    <inherits-from>Effects/model-transparent</inherits-from>
     <object-name>vitres</object-name>
     <object-name>verriere</object-name>
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
-  </animation>
-
+  </effect>
+  
   <!-- Une ombre pour OSG -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/shadow.xml</path>
     <offsets>
-      <x-m>  0.000 </x-m>
-      <y-m>  0.000 </y-m>
-      <z-m> -1.459 </z-m>
+      <x-m>  0.0 </x-m>
+      <y-m>  0.0 </y-m>
+      <z-m> -1.4 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Interieur -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Interior/interior.xml</path>
   </model>
-
+  
   <!-- Moteur -->
   <model>
-    <path>Aircraft/Commonwealth-Ca-12/Models/Engines/r1830.xml</path>
+    <path>Aircraft/Commonwealth-Ca-12/Models/Engines/engine.xml</path>
     <offsets>
       <x-m> -2.900 </x-m>
       <y-m>  0.000 </y-m>
       <z-m>  0.166 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Cranking effects -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/cranking/cranking.xml</path>
@@ -212,7 +208,7 @@
       <z-m> -0.243 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Effets sur le sol -->
   <!-- Roue gauche -->
   <model>
@@ -223,7 +219,7 @@
       <z-m> -1.755 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Roue droite -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/ground/ground1.xml</path>
@@ -233,7 +229,7 @@
       <z-m> -1.755 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Patte de queue -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/ground/ground2.xml</path>
@@ -243,7 +239,7 @@
       <z-m> -0.470 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Effets de tir -->
   <!-- Canon gauche -->
   <model>
@@ -255,7 +251,7 @@
       <pitch-deg> 180 </pitch-deg>
     </offsets>
   </model>
-
+  
   <!-- Gauche intérieur -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/guns/fire.xml</path>
@@ -266,7 +262,7 @@
       <pitch-deg> 180 </pitch-deg>
     </offsets>
   </model>
-
+  
   <!-- Gauche extérieur -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/guns/fire.xml</path>
@@ -277,7 +273,7 @@
       <pitch-deg> 180 </pitch-deg>
     </offsets>
   </model>
-
+  
   <!-- Canon droit -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/guns/fire.xml</path>
@@ -288,7 +284,7 @@
       <pitch-deg> 180 </pitch-deg>
     </offsets>
   </model>
-
+  
   <!-- Droit intérieur-->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/guns/fire.xml</path>
@@ -299,7 +295,7 @@
       <pitch-deg> 180 </pitch-deg>
     </offsets>
   </model>
-
+  
   <!-- Droit extérieur -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/Effects/guns/fire.xml</path>
@@ -310,7 +306,7 @@
       <pitch-deg> 180 </pitch-deg>
     </offsets>
   </model>
-
+  
   <!-- L'hélice --> 
   <animation>
     <name>HeliceComplete</name>
@@ -319,7 +315,7 @@
     <object-name>propdisc</object-name>
     <object-name>propblur</object-name>
   </animation>
-
+  
   <!-- Séléction de l'objet visible en fonction des rpm -->
   <animation>
     <type>select</type>
@@ -331,38 +327,44 @@
       </greater-than>
     </condition>
   </animation>
-
+  
   <animation>
     <type>select</type>
     <object-name>propblur</object-name>
     <condition>
-    <and>
-      <greater-than>
-        <property>/engines/engine[0]/rpm</property>
-        <value>300.000</value>
-      </greater-than>
-      <less-than>
-        <property>/engines/engine[0]/rpm</property>
-        <value>900.001</value>
-      </less-than>
-    </and>
+      <and>
+        <greater-than>
+          <property>/engines/engine[0]/rpm</property>
+          <value>300.000</value>
+        </greater-than>
+        <less-than>
+          <property>/engines/engine[0]/rpm</property>
+          <value>900.001</value>
+        </less-than>
+      </and>
     </condition>
   </animation>
-
+  
   <animation>
     <type>select</type>
     <object-name>helice</object-name>
     <condition>
       <less-than>
         <property>/engines/engine[0]/rpm</property>
-	<value>900</value>
+        <value>900</value>
       </less-than>
     </condition>
   </animation>
-
+  
   <animation>
     <type>spin</type>
     <object-name>HeliceComplete</object-name>
+    <condition>
+      <greater-than>
+        <property>engines/engine[0]/rpm</property>
+        <value> 5 </value>
+      </greater-than>
+    </condition>
     <property>/engines/engine[0]/rpm</property>
     <factor> 1 </factor>
     <center>
@@ -376,7 +378,7 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <!-- Animations des ailerons -->
   <animation>
     <type>rotate</type>
@@ -392,7 +394,7 @@
       <z2-m> -0.425 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>aileronD</object-name>
@@ -407,7 +409,7 @@
       <z2-m> -0.262 </z2-m>
     </axis>
   </animation>
-
+  
   <!-- Volets -->
   <animation>
     <type>rotate</type>
@@ -423,7 +425,7 @@
       <z2-m> -0.648 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>voletG2</object-name>
@@ -438,7 +440,7 @@
       <z2-m> -0.645 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>voletD1</object-name>
@@ -453,7 +455,7 @@
       <z2-m> -0.476 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>voletD2</object-name>
@@ -468,7 +470,7 @@
       <z2-m> -0.647 </z2-m>
     </axis>
   </animation>
-
+  
   <!-- Gouverne de profondeur -->
   <animation>
     <type>rotate</type>
@@ -486,7 +488,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <!-- Gouverne de direction -->
   <animation>
     <type>rotate</type>
@@ -504,7 +506,7 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <!-- rentree des roues -->
   <animation>
     <name>RoueGauche</name>
@@ -512,7 +514,7 @@
     <object-name>axeGB</object-name>
     <object-name>roueG</object-name>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>RoueGauche</object-name>
@@ -532,7 +534,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>RoueGauche</object-name>
@@ -552,7 +554,7 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>RoueGauche</object-name>
@@ -572,14 +574,14 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <name>RoueDroite</name>
     <object-name>axeDH</object-name>
     <object-name>axeDB</object-name>
     <object-name>roueD</object-name>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>RoueDroite</object-name>
@@ -599,7 +601,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>RoueDroite</object-name>
@@ -619,7 +621,7 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>RoueDroite</object-name>
@@ -639,7 +641,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <!-- Les portes des trains -->
   <animation>
     <type>rotate</type>
@@ -660,7 +662,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteG2</object-name>
@@ -680,7 +682,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteG2</object-name>
@@ -700,7 +702,7 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteG2</object-name>
@@ -720,7 +722,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteD1</object-name>
@@ -740,7 +742,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteD2</object-name>
@@ -760,7 +762,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteD2</object-name>
@@ -780,7 +782,7 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>porteD2</object-name>
@@ -800,36 +802,14 @@
       <z> 0 </z>
     </axis>
   </animation>
-
-  <!-- Canopy
-  <animation>
-    <name>AllCanopy</name>
-    <object-name>canopy</object-name>
-    <object-name>tourcanopy</object-name>
-  </animation>
-
-  <animation>
-    <type>translate</type>
-    <object-name>AllCanopy</object-name>
-    <property>/instrumentation/doors/crew/position-norm</property>
-    <interpolation>
-      <entry><ind> 0 </ind><dep> 0.0 </dep></entry>
-      <entry><ind> 1 </ind><dep> 0.6 </dep></entry>
-    </interpolation>
-    <axis>
-      <x> 1 </x>
-      <y> 0 </y>
-      <z> 0 </z>
-    </axis>
-  </animation> -->
-
+  
   <!-- Compression
   <animation>
     <name>RoueGauche</name>
     <object-name>axeG</object-name>
     <object-name>roueG</object-name>
   </animation>
-
+  
   <animation>
     <type>translate</type>
     <object-name>RoueGauche</object-name>
@@ -844,13 +824,13 @@
       <z> 1 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <name>RoueDroite</name>
     <object-name>axeD</object-name>
     <object-name>roueD</object-name>
   </animation>
-
+  
   <animation>
     <type>translate</type>
     <object-name>RoueDroite</object-name>
@@ -865,7 +845,7 @@
       <z> 1 </z>
     </axis>
   </animation> -->
-
+  
   <!-- Rotation des roues lors du roulage -->
   <animation>
     <type>spin</type>
@@ -883,7 +863,7 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>spin</type>
     <object-name>roueD</object-name>
@@ -900,7 +880,7 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <animation>
     <type>spin</type>
     <object-name>roueA</object-name>
@@ -917,7 +897,7 @@
       <z>  0 </z>
     </axis>
   </animation>
-
+  
   <!-- Ajout des effets lumineux -->
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/light/beacon.xml</path>
@@ -927,7 +907,7 @@
       <z-m> 1.605 </z-m>
     </offsets>
   </model>
-
+  
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/light/beacon.xml</path>
     <offsets>
@@ -936,7 +916,7 @@
       <z-m> -0.729 </z-m>
     </offsets>
   </model>
-
+  
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/light/RedLight.xml</path>
     <offsets>
@@ -945,7 +925,16 @@
       <z-m> -0.177 </z-m>
     </offsets>
   </model>
-
+  
+  <model>
+    <path>Aircraft/Commonwealth-Ca-12/Models/light/StrobeLight.xml</path>
+    <offsets>
+      <x-m> -0.839 </x-m>
+      <y-m> -5.449 </y-m>
+      <z-m> -0.177 </z-m>
+    </offsets>
+  </model>
+  
   <model>
     <path>Aircraft/Commonwealth-Ca-12/Models/light/GreenLight.xml</path>
     <offsets>
@@ -954,36 +943,41 @@
       <z-m> -0.177 </z-m>
     </offsets>
   </model>
-
+  
   <model>
-    <path>Aircraft/Commonwealth-Ca-12/Models/light/StrobeWhite.xml</path>
-    <offsets>
-      <x-m> -0.839 </x-m>
-      <y-m> -5.449 </y-m>
-      <z-m> -0.177 </z-m>
-    </offsets>
-  </model>
-
-  <model>
-    <path>Aircraft/Commonwealth-Ca-12/Models/light/StrobeWhite.xml</path>
+    <path>Aircraft/Commonwealth-Ca-12/Models/light/StrobeLight.xml</path>
     <offsets>
       <x-m> -0.839 </x-m>
       <y-m>  5.449 </y-m>
       <z-m> -0.177 </z-m>
     </offsets>
   </model>
-
+  
   <!-- Canopy -->
   <animation>
     <name>AllCanope</name>
     <object-name>canope</object-name>
     <object-name>verriere</object-name>
   </animation>
-
+  
+  <animation>
+    <type>pick</type>
+    <object-name>AllCanope</object-name>
+    <visible>true</visible>
+    <action>
+      <button>0</button>
+      <repeatable>false</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>doors.crew.toggle();</script>
+      </binding>
+    </action>
+  </animation>
+  
   <animation>
     <type>translate</type>
     <object-name>AllCanope</object-name>
-    <property>/instrumentation/doors/crew/position-norm</property>
+    <property>sim/model/door-positions/crew/position-norm</property>
     <interpolation>
       <entry><ind> 0 </ind><dep> 0.00 </dep></entry>
       <entry><ind> 1 </ind><dep> 0.68 </dep></entry>
@@ -994,7 +988,7 @@
       <z> 0 </z>
     </axis>
   </animation>
-
+  
   <!-- Clapets du capot coté gauche -->
   <animation>
     <type>rotate</type>
@@ -1006,15 +1000,15 @@
       <entry><ind> 200 </ind><dep>  -2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m> -0.452 </y1-m>
-     <z1-m>  0.639 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m> -0.193 </y2-m>
-     <z2-m>  0.773 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m> -0.452 </y1-m>
+      <z1-m>  0.639 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m> -0.193 </y2-m>
+      <z2-m>  0.773 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>ailetteG2</object-name>
@@ -1025,15 +1019,15 @@
       <entry><ind> 200 </ind><dep>  -2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m> -0.588 </y1-m>
-     <z1-m>  0.439 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m> -0.452 </y2-m>
-     <z2-m>  0.639 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m> -0.588 </y1-m>
+      <z1-m>  0.439 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m> -0.452 </y2-m>
+      <z2-m>  0.639 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>ailetteG3</object-name>
@@ -1044,15 +1038,15 @@
       <entry><ind> 200 </ind><dep>  -2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m> -0.642 </y1-m>
-     <z1-m>  0.189 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m> -0.588 </y2-m>
-     <z2-m>  0.439 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m> -0.642 </y1-m>
+      <z1-m>  0.189 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m> -0.588 </y2-m>
+      <z2-m>  0.439 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>ailetteG4</object-name>
@@ -1063,15 +1057,15 @@
       <entry><ind> 200 </ind><dep>  -2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m> -0.585 </y1-m>
-     <z1-m> -0.073 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m> -0.642 </y2-m>
-     <z2-m>  0.189 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m> -0.585 </y1-m>
+      <z1-m> -0.073 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m> -0.642 </y2-m>
+      <z2-m>  0.189 </z2-m>
     </axis>
   </animation>
-
+  
   <!-- Clapets du capot coté droit -->
   <animation>
     <type>rotate</type>
@@ -1083,15 +1077,15 @@
       <entry><ind> 200 </ind><dep>  2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m>  0.452 </y1-m>
-     <z1-m>  0.639 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m>  0.193 </y2-m>
-     <z2-m>  0.773 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m>  0.452 </y1-m>
+      <z1-m>  0.639 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m>  0.193 </y2-m>
+      <z2-m>  0.773 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>ailetteD2</object-name>
@@ -1102,15 +1096,15 @@
       <entry><ind> 200 </ind><dep>  2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m>  0.588 </y1-m>
-     <z1-m>  0.439 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m>  0.452 </y2-m>
-     <z2-m>  0.639 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m>  0.588 </y1-m>
+      <z1-m>  0.439 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m>  0.452 </y2-m>
+      <z2-m>  0.639 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>ailetteD3</object-name>
@@ -1121,15 +1115,15 @@
       <entry><ind> 200 </ind><dep>  2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m>  0.642 </y1-m>
-     <z1-m>  0.189 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m>  0.588 </y2-m>
-     <z2-m>  0.439 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m>  0.642 </y1-m>
+      <z1-m>  0.189 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m>  0.588 </y2-m>
+      <z2-m>  0.439 </z2-m>
     </axis>
   </animation>
-
+  
   <animation>
     <type>rotate</type>
     <object-name>ailetteD4</object-name>
@@ -1140,14 +1134,13 @@
       <entry><ind> 200 </ind><dep>  2 </dep></entry>
     </interpolation>
     <axis>
-     <x1-m> -2.492 </x1-m>
-     <y1-m>  0.585 </y1-m>
-     <z1-m> -0.073 </z1-m>
-     <x2-m> -2.492 </x2-m>
-     <y2-m>  0.642 </y2-m>
-     <z2-m>  0.189 </z2-m>
+      <x1-m> -2.492 </x1-m>
+      <y1-m>  0.585 </y1-m>
+      <z1-m> -0.073 </z1-m>
+      <x2-m> -2.492 </x2-m>
+      <y2-m>  0.642 </y2-m>
+      <z2-m>  0.189 </z2-m>
     </axis>
   </animation>
-
+  
 </PropertyList>
-
